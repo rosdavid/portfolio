@@ -1,0 +1,43 @@
+@font-face {
+  font-family: boxicons;
+  font-weight: 400;
+  font-style: normal;
+  src: url(../fonts/boxicons.eot);
+  src: url(../fonts/boxicons.eot) format("embedded-opentype"),
+    url(../fonts/boxicons.woff2) format("woff2"),
+    url(../fonts/boxicons.woff) format("woff"),
+    url(../fonts/boxicons.ttf) format("truetype"),
+    url(../fonts/boxicons.svg?#boxicons) format("svg");
+  font-display: swap;
+}
+.bx {
+  font-family: boxicons !important;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  display: inline-block;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.bx-home-alt:before {
+  content: "\eb13";
+}
+.bx-user:before {
+  content: "\ec63";
+}
+.bx-book-alt:before {
+  content: "\e9e3";
+}
+.bx-code-alt:before {
+  content: "\ea69";
+}
+.bx-briefcase-alt:before {
+  content: "\ea01";
+}
+.bx-message-square-detail:before {
+  content: "\eb80";
+}
