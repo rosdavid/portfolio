@@ -153,6 +153,7 @@ section {
 
 .section-container {
   display: flex;
+  justify-content: space-evenly;
   padding: 10px;
 
 }
@@ -1555,6 +1556,6 @@ footer {
   .pic_animated {
     width: 200px;
     height: 200px;
-    margin-left: 70px;
+    margin-left: 50px;
   }
 }
