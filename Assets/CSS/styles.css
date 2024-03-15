@@ -52,6 +52,9 @@ nav {
   align-items: center;
   justify-content: space-around;
   height: 10vh;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .nav-links {
@@ -59,9 +62,11 @@ nav {
   list-style: none;
   font-size: 0.9rem;
   padding: 10px;
-  background-color: #222222;
+  background: rgba(62, 62, 62, 0.34);
   border-radius: 100px;
-  border: 1px solid rgba(100, 100, 100, 0.51);
+  border: 1px solid rgba(197, 197, 197, 0.51);
+  backdrop-filter: blur(13.7px);
+-webkit-backdrop-filter: blur(13.7px);
 }
 
 a {
