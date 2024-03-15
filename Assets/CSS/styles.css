@@ -120,6 +120,52 @@ a:hover {
     margin-left: -1px;
     margin-bottom: -1px;
   }
+  #desktop-nav {
+    display: none;
+  }
+
+  #mobile-nav {
+    display: flex;
+  }
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    height: fit-content;
+    margin-top: 7rem;
+  }
+  article {
+    font-size: 1rem;
+  }
+  footer {
+    height: 50px;
+    margin-top: 10rem;
+    margin-bottom: 0.5rem;
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  #skills {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  #contact {
+    margin-top: 5rem;
+  }
+  .pic_animated {
+    width: 200px;
+    height: 200px;
+    margin-left: 50px;
+  }
+  nav {
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+    
+  }
 }
 
 .tabbar__list, .tabbar__link {
@@ -1526,48 +1572,5 @@ footer {
     font-size: 1.25rem;
     margin-top: 2rem;
     margin-bottom: -10px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #desktop-nav {
-    display: none;
-  }
-
-  #mobile-nav {
-    display: flex;
-  }
-  #contact,
-  footer {
-    height: 40vh;
-  }
-  #profile {
-    height: fit-content;
-    margin-top: 7rem;
-  }
-  article {
-    font-size: 1rem;
-  }
-  footer {
-    height: 50px;
-    margin-top: 10rem;
-    margin-bottom: 0.5rem;
-  }
-  .about-containers,
-  .contact-info-upper-container,
-  .btn-container {
-    flex-wrap: wrap;
-  }
-  #skills {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-  }
-  #contact {
-    margin-top: 5rem;
-  }
-  .pic_animated {
-    width: 200px;
-    height: 200px;
-    margin-left: 50px;
   }
 }
