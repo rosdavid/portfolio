@@ -1040,6 +1040,7 @@ section {
   justify-content: center;
   flex-direction: row;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .article-container {
@@ -1394,6 +1395,12 @@ footer {
     border-color: rgb(70, 70, 70);
     border-image: initial;
     transition: all 0.2s ease 0s;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

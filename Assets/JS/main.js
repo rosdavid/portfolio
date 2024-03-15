@@ -93,6 +93,15 @@ function openProjectThree() {
   window.open("https://davidros.vercel.app/", "_blank");
 }
 
+//Project Four
+function openGithubFour() {
+  window.open("https://github.com/rosdavid/gestnote/", "_blank");
+}
+
+function openProjectFour() {
+  window.open("", "_blank");
+}
+
 //REVEAL EFFECT
 
 window.addEventListener("scroll", reveal);
