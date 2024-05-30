@@ -769,7 +769,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 53vw;
 }
 
