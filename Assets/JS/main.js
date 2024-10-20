@@ -124,27 +124,45 @@ function reveal() {
 
 //EXPERIENCE
 
-var modalOne = document.getElementById("modal-one");
-var btnOne = document.getElementById("btn-open-one");
-var spanOne = document.getElementsByClassName("close-one")[0];
+var modal = document.getElementById("modal-one");
+var btn = document.getElementById("btn-open-one");
+var span = document.getElementsByClassName("close-one")[0];
 
-btnOne.onclick = function () {
-  modalOne.style.display = "block";
+btn.onclick = function () {
+  modal.style.display = "block";
 };
 
-spanOne.onclick = function () {
-  modalOne.style.display = "none";
+span.onclick = function () {
+  modal.style.display = "none";
 };
 
 window.onclick = function (event) {
-  if (event.target == modalOne) {
-    modalOne.style.display = "none";
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
 };
 
 var modal = document.getElementById("modal-two");
 var btn = document.getElementById("btn-open-two");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close-two")[0];
+
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+var modal = document.getElementById("modal-three");
+var btn = document.getElementById("btn-open-three");
+var span = document.getElementsByClassName("close-three")[0];
 
 btn.onclick = function () {
   modal.style.display = "block";
