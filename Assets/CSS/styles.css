@@ -1384,15 +1384,29 @@ article .about {
   cursor: pointer;
 }
 
-.close {
+.close-two {
   color: #fff;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close-two:hover,
+.close-two:focus {
+  color: #aaa;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close-three {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-three:hover,
+.close-three:focus {
   color: #aaa;
   text-decoration: none;
   cursor: pointer;

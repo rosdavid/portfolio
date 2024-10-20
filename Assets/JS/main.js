@@ -144,7 +144,7 @@ window.onclick = function (event) {
 
 var modal = document.getElementById("modal-two");
 var btn = document.getElementById("btn-open-two");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close-two")[0];
 
 btn.onclick = function () {
   modal.style.display = "block";
@@ -157,6 +157,24 @@ span.onclick = function () {
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+};
+
+var modalThree = document.getElementById("modal-three");
+var btnThree = document.getElementById("btn-open-three");
+var spanThree = document.getElementsByClassName("close-three")[0];
+
+btnThree.onclick = function () {
+  modalThree.style.display = "block";
+};
+
+spanThree.onclick = function () {
+  modalThree.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modalThree) {
+    modalThree.style.display = "none";
   }
 };
 
