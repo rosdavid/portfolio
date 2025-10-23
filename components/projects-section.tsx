@@ -7,6 +7,23 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "Mokkio — v1.0.0-beta.1",
+    description:
+      "Mokkio is an mockup generator that allows users to create realistic device or beautiful mockups for their apps and websites quickly and easily.",
+    image: "/mokkio.webp",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js",
+      "TypeScript",
+      "React",
+      "Figma",
+    ],
+    github: "https://github.com/rosdavid/mokkio",
+    demo: "https://mokkio.vercel.app/",
+    inProgress: false,
+  },
+  {
     title: "Qubio",
     description:
       "Full-stack CMS for hospitality businesses to manage stocks, employees, and orders efficiently, including analytics and reporting features, smart alerts, marketplace, and multi-location support.",
@@ -61,7 +78,7 @@ const projects = [
     ],
     github: "#",
     demo: "#",
-    inProgress: false,
+    inProgress: true,
   },
 ];
 
@@ -119,7 +136,7 @@ export function ProjectsSection() {
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-fill"
                   />
                 )}
               </div>
