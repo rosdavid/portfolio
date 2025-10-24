@@ -349,6 +349,12 @@ export function RealtimeCollabDemo() {
     const handleMouseDown = (e: MouseEvent) => {
       if (!boardRef.current) return;
 
+      // Si el click ocurre sobre el botón de eliminar, no iniciar drag
+      const target = e.target as HTMLElement;
+      if (target.closest("button[data-trash]")) {
+        return;
+      }
+
       const rect = boardRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -467,6 +473,17 @@ export function RealtimeCollabDemo() {
 
   const deleteNote = (id: string) => {
     setNotes(notes.filter((note) => note.id !== id));
+    // Si la nota eliminada es la que se está arrastrando, limpiar el estado de drag
+    if (draggedNote === id) {
+      dragStateRef.current.isMouseDown = false;
+      dragStateRef.current.draggedNoteId = null;
+      dragStateRef.current.dragStartOffset = { x: 0, y: 0 };
+      setDraggedNote(null);
+      setIsUserDragging(false);
+      if (typeof document !== "undefined") {
+        document.body.style.cursor = "";
+      }
+    }
   };
 
   return (
@@ -606,6 +623,8 @@ export function RealtimeCollabDemo() {
                 size="sm"
                 variant="ghost"
                 className="h-5 w-5 md:h-6 md:w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity cursor-none"
+                data-trash
+                onMouseDown={(e) => e.stopPropagation()}
                 onClick={() => deleteNote(note.id)}
               >
                 <Trash2 className="w-3 h-3 md:w-4 md:h-4" />
