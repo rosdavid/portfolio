@@ -76,7 +76,7 @@ export function TodoDemo() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4">
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="glass-card p-3 md:p-4 rounded-xl text-center">

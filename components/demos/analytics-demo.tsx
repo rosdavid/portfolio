@@ -46,7 +46,7 @@ export function AnalyticsDemo() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4">
       {/* Key metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="glass-card p-4 md:p-6 rounded-xl">

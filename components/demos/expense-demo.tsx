@@ -104,7 +104,7 @@ export function ExpenseDemo() {
   })).filter((d) => d.value > 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4">
       {/* Budget overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="glass-card p-4 md:p-6 rounded-xl">

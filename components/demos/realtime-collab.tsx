@@ -112,63 +112,61 @@ export function RealtimeCollabDemo() {
     const interval = setInterval(() => {
       setUsers((prevUsers) => {
         if (prevUsers.length === 0) {
-          return DEMO_USERS.slice(1).map((user, index) => ({
+          // Distribute users across the entire board randomly
+          const boardWidth = boardRef.current
+            ? boardRef.current.offsetWidth
+            : 580;
+          const boardHeight = boardRef.current
+            ? boardRef.current.offsetHeight
+            : 450;
+
+          return DEMO_USERS.slice(1).map((user) => ({
             ...user,
-            x: 80 + index * 150, // More spread out: 80, 230, 380, 530
-            y: 120 + (index % 2) * 120, // Alternate rows: 120, 240, 120, 240
+            x: 50 + Math.random() * (boardWidth - 100), // Random distribution across full width
+            y: 50 + Math.random() * (boardHeight - 100), // Random distribution across full height
           }));
         }
 
-        return prevUsers.map((user, userIndex) => {
-          // Much more active movement patterns
-          const shouldMove = Math.random() > 0.05; // 95% chance to move (much more active)
+        return prevUsers.map((user) => {
+          // Much more active movement patterns - free movement across entire board
+          const shouldMove = Math.random() > 0.02; // 98% chance to move (even more active)
           if (!shouldMove) return user;
 
-          // Create territorial zones that don't depend on note positions
-          const territorialZones = [
-            // Sarah's territory - Left side quadrants
-            [
-              { x: 80, y: 80 }, // Top-left corner
-              { x: 200, y: 100 }, // Top-left center
-              { x: 120, y: 200 }, // Left center
-              { x: 80, y: 320 }, // Bottom-left corner
-              { x: 220, y: 280 }, // Bottom-left center
-            ],
-            // Mike's territory - Right side quadrants
-            [
-              { x: 400, y: 80 }, // Top-right corner
-              { x: 520, y: 100 }, // Top-right center
-              { x: 480, y: 200 }, // Right center
-              { x: 580, y: 320 }, // Bottom-right corner
-              { x: 420, y: 280 }, // Bottom-right center
-            ],
-            // Alex's territory - Center area
-            [
-              { x: 280, y: 80 }, // Top-center
-              { x: 320, y: 120 }, // Center-top
-              { x: 280, y: 200 }, // Center
-              { x: 360, y: 240 }, // Center-bottom
-              { x: 320, y: 320 }, // Bottom-center
-            ],
-          ];
+          // Free movement across entire board with some clustering around notes
+          const boardWidth = boardRef.current
+            ? boardRef.current.offsetWidth
+            : 580;
+          const boardHeight = boardRef.current
+            ? boardRef.current.offsetHeight
+            : 450;
 
-          const userTerritory =
-            territorialZones[userIndex] || territorialZones[0];
+          // Sometimes cluster around existing notes, sometimes explore freely
+          const clusterAroundNotes = Math.random() < 0.3; // Reduced to 30% chance to cluster
+          let target;
 
-          // Add some cross-territory exploration but much less frequently
-          const explorationZones = [
-            { x: 320, y: 180 }, // Center top
-            { x: 280, y: 250 }, // Center
-            { x: 360, y: 320 }, // Center bottom
-          ];
-
-          // Choose target zone - heavily weighted towards user's territory (90% stay in territory)
-          const stayInTerritory = Math.random() < 0.9; // Increased from 0.8 to 0.9
-          const availableZones = stayInTerritory
-            ? userTerritory
-            : [...userTerritory, ...explorationZones];
-          const target =
-            availableZones[Math.floor(Math.random() * availableZones.length)];
+          if (clusterAroundNotes && notes.length > 0) {
+            // Choose a random note to cluster around
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            // Add some offset around the note
+            const offsetX = (Math.random() - 0.5) * 100; // ±50px around note
+            const offsetY = (Math.random() - 0.5) * 80; // ±40px around note
+            target = {
+              x: Math.max(
+                20,
+                Math.min(boardWidth - 20, randomNote.x + offsetX)
+              ),
+              y: Math.max(
+                20,
+                Math.min(boardHeight - 20, randomNote.y + offsetY)
+              ),
+            };
+          } else {
+            // Free exploration across entire board
+            target = {
+              x: 20 + Math.random() * (boardWidth - 40),
+              y: 20 + Math.random() * (boardHeight - 40),
+            };
+          }
 
           // Calculate direction towards target with some randomness
           const dx = target.x - user.x;
@@ -177,33 +175,27 @@ export function RealtimeCollabDemo() {
 
           // If far from target, move towards it; if close, add more randomness
           let moveX, moveY;
-          if (distance > 80) {
+          if (distance > 60) {
             // Move towards target (bigger, more dynamic steps)
-            const speed = 40 + Math.random() * 60; // Much faster, more dynamic
+            const speed = 45 + Math.random() * 70; // Increased speed for more movement
             moveX = (dx / distance) * speed + (Math.random() - 0.5) * 60;
             moveY = (dy / distance) * speed + (Math.random() - 0.5) * 60;
           } else {
             // Explore around current area with much larger radius
-            moveX = (Math.random() - 0.5) * 200;
-            moveY = (Math.random() - 0.5) * 160;
+            moveX = (Math.random() - 0.5) * 220; // Increased exploration radius
+            moveY = (Math.random() - 0.5) * 180; // Increased exploration radius
           }
 
           // Add occasional large jumps but less frequently
-          if (Math.random() < 0.05) {
-            // Reduced from 0.1 to 0.05, but make jumps even bigger
-            moveX *= 2.2;
-            moveY *= 2.2;
+          if (Math.random() < 0.08) {
+            // Increased frequency for more movement across board
+            moveX *= 2.5;
+            moveY *= 2.5;
           }
 
-          // Responsive boundaries based on screen size
-          const maxX =
-            typeof window !== "undefined" && window.innerWidth < 768
-              ? 400
-              : 580;
-          const maxY =
-            typeof window !== "undefined" && window.innerWidth < 768
-              ? 300
-              : 380;
+          // Responsive boundaries - leave margin for cursor visibility
+          const maxX = boardWidth - 60; // Leave space for cursor and label
+          const maxY = boardHeight - 40; // Leave space for cursor and label
           const newX = Math.max(10, Math.min(maxX, user.x + moveX));
           const newY = Math.max(10, Math.min(maxY, user.y + moveY));
 
@@ -216,66 +208,34 @@ export function RealtimeCollabDemo() {
         const newDrags = { ...prevDrags };
 
         // For each user, decide if they should start/stop dragging
-        DEMO_USERS.slice(1).forEach((user, userIndex) => {
+        DEMO_USERS.slice(1).forEach((user) => {
           const currentDrag = newDrags[user.id];
           const now = Date.now();
 
           if (!currentDrag) {
-            // 8% chance to start dragging a note in their territory (much more frequent)
-            if (Math.random() < 0.08) {
-              // Solo arrastrar notas que no estén siendo arrastradas y que no hayan sido arrastradas recientemente por este usuario
-              // Cada usuario tiene preferencia por una nota según su índice
-              const territorialNotes =
-                userIndex === 0
-                  ? notes.filter((note, i) => note.x < 250 && i % 3 === 0)
-                  : userIndex === 1
-                  ? notes.filter(
-                      (note, i) => note.x >= 250 && note.x < 450 && i % 3 === 1
-                    )
-                  : notes.filter(
-                      (note, i) => note.x >= 200 && note.x < 500 && i % 3 === 2
-                    );
-
-              // Si no hay ninguna nota preferida, fallback a cualquier nota de su territorio
-              const fallbackNotes =
-                userIndex === 0
-                  ? notes.filter((note) => note.x < 250)
-                  : userIndex === 1
-                  ? notes.filter((note) => note.x >= 250 && note.x < 450)
-                  : notes.filter((note) => note.x >= 200 && note.x < 500);
-
-              const availableNotes = (
-                territorialNotes.length > 0 ? territorialNotes : fallbackNotes
-              ).filter(
+            // 6% chance to start dragging a note (less frequent for balanced activity)
+            if (Math.random() < 0.06) {
+              // Find available notes that aren't being dragged
+              const availableNotes = notes.filter(
                 (note) =>
                   !Object.values(newDrags).some((d) => d?.noteId === note.id)
               );
               if (availableNotes.length > 0) {
-                // Elegir la nota más lejana a la posición actual del usuario
-                const userPos = users.find((u) => u.id === user.id) || {
-                  x: 0,
-                  y: 0,
-                };
-                let farthestNote = availableNotes[0];
-                let maxDist = 0;
-                for (const note of availableNotes) {
-                  const dist =
-                    Math.abs(note.x - userPos.x) + Math.abs(note.y - userPos.y);
-                  if (dist > maxDist) {
-                    maxDist = dist;
-                    farthestNote = note;
-                  }
-                }
+                // Choose a random note to drag
+                const randomNote =
+                  availableNotes[
+                    Math.floor(Math.random() * availableNotes.length)
+                  ];
                 newDrags[user.id] = {
-                  noteId: farthestNote.id,
+                  noteId: randomNote.id,
                   startTime: now,
                 };
               }
             }
           } else {
-            // Continue dragging for 3-5 seconds, then stop (longer duration)
+            // Continue dragging for 4-6 seconds, then stop (balanced duration)
             const dragDuration = now - currentDrag.startTime;
-            if (dragDuration > 3000 + Math.random() * 2000) {
+            if (dragDuration > 4000 + Math.random() * 2000) {
               delete newDrags[user.id];
             }
           }
@@ -295,51 +255,44 @@ export function RealtimeCollabDemo() {
           if (draggingUser) {
             const [userId] = draggingUser;
             const user = users.find((u) => u.id === userId);
-            const draggingUserIndex =
-              DEMO_USERS.findIndex((u) => u.id === userId) - 1; // -1 because we slice(1)
 
-            if (user && draggingUserIndex >= 0) {
-              // Move note towards a random position within the user's territory, not directly to cursor
-              const userTerritory =
-                draggingUserIndex === 0
-                  ? [
-                      { x: 80, y: 80 },
-                      { x: 200, y: 100 },
-                      { x: 120, y: 200 },
-                      { x: 80, y: 320 },
-                      { x: 220, y: 280 },
-                    ]
-                  : draggingUserIndex === 1
-                  ? [
-                      { x: 400, y: 80 },
-                      { x: 520, y: 100 },
-                      { x: 480, y: 200 },
-                      { x: 580, y: 320 },
-                      { x: 420, y: 280 },
-                    ]
-                  : [
-                      { x: 280, y: 80 },
-                      { x: 320, y: 120 },
-                      { x: 280, y: 200 },
-                      { x: 360, y: 240 },
-                      { x: 320, y: 320 },
-                    ];
+            if (user) {
+              // Move note freely across the entire board with more dynamic movement
+              const boardWidth = boardRef.current
+                ? boardRef.current.offsetWidth
+                : 580;
+              const boardHeight = boardRef.current
+                ? boardRef.current.offsetHeight
+                : 450;
 
-              const target =
-                userTerritory[Math.floor(Math.random() * userTerritory.length)];
-              const moveSpeed = 0.08; // Much faster movement for dragged notes
+              // Generate new random target every few movements for more freedom
+              const newTarget = {
+                x: 20 + Math.random() * (boardWidth - 220),
+                y: 20 + Math.random() * (boardHeight - 160),
+              };
+
+              // More dynamic movement with higher speed and more randomness
+              const moveSpeed = 0.12; // Much faster movement
+              const randomFactor = 0.3; // Add randomness to movement
+
+              const deltaX =
+                (newTarget.x - note.x) * moveSpeed +
+                (Math.random() - 0.5) * randomFactor * boardWidth;
+              const deltaY =
+                (newTarget.y - note.y) * moveSpeed +
+                (Math.random() - 0.5) * randomFactor * boardHeight;
 
               return {
                 ...note,
-                x: note.x + (target.x - note.x) * moveSpeed,
-                y: note.y + (target.y - note.y) * moveSpeed,
+                x: Math.max(10, Math.min(boardWidth - 210, note.x + deltaX)),
+                y: Math.max(10, Math.min(boardHeight - 150, note.y + deltaY)),
               };
             }
           }
           return note;
         });
       });
-    }, 600); // Faster updates for more dynamic feel
+    }, 400); // Even faster updates for more dynamic feel
 
     return () => clearInterval(interval);
   }, [notes, users]);
@@ -487,7 +440,7 @@ export function RealtimeCollabDemo() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Users className="w-5 h-5 text-primary" />
