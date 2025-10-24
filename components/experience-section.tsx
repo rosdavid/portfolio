@@ -103,7 +103,7 @@ export function ExperienceSection() {
       location: "Navarcles, Spain",
       period: "2019 - 2024",
       description:
-        "Led the transformation of a family business from Shopify e-commerce to a dedicated landing page for event services. Managed brand development, provided technical support, executed marketing and advertising campaigns, optimized SEO, and oversaw site development and design.",
+        "Led the transformation from Shopify e-commerce to a dedicated landing page for event services. Managed brand development, provided technical support, executed marketing and advertising campaigns, optimized SEO, and oversaw site development and design.",
       technologies: [
         "JavaScript",
         "CSS",
