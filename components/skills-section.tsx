@@ -85,12 +85,6 @@ const skills = [
   },
 ];
 
-const languages = [
-  { name: "Spanish", level: "Native", proficiency: 100 },
-  { name: "English", level: "Professional", proficiency: 90 },
-  { name: "Catalan", level: "Native", proficiency: 100 },
-];
-
 const softSkills = [
   "Leadership",
   "Team Collaboration",
@@ -100,6 +94,12 @@ const softSkills = [
   "Agile Methodology",
   "Mentoring",
   "Time Management",
+];
+
+const languages = [
+  { name: "Spanish", level: "Native", proficiency: 100 },
+  { name: "English", level: "Professional", proficiency: 90 },
+  { name: "Catalan", level: "Native", proficiency: 100 },
 ];
 
 export function SkillsSection() {
@@ -148,6 +148,23 @@ export function SkillsSection() {
 
         {/* Languages & Soft Skills */}
         <div className="grid md:grid-cols-2 gap-8 mt-16">
+          {/* Soft Skills */}
+          <Card className="glass-card p-8 space-y-6">
+            <h3 className="text-2xl font-semibold flex items-center gap-2">
+              <Palette className="h-6 w-6 text-primary" />
+              Soft Skills
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {softSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-4 py-2 rounded-full glass-card text-sm font-medium hover:bg-primary/10 transition-colors cursor-default"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </Card>
           {/* Languages */}
           <Card className="glass-card p-8 space-y-6">
             <h3 className="text-2xl font-semibold flex items-center gap-2">
@@ -170,24 +187,6 @@ export function SkillsSection() {
                     />
                   </div>
                 </div>
-              ))}
-            </div>
-          </Card>
-
-          {/* Soft Skills */}
-          <Card className="glass-card p-8 space-y-6">
-            <h3 className="text-2xl font-semibold flex items-center gap-2">
-              <Palette className="h-6 w-6 text-primary" />
-              Soft Skills
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {softSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-4 py-2 rounded-full glass-card text-sm font-medium hover:bg-primary/10 transition-colors cursor-default"
-                >
-                  {skill}
-                </span>
               ))}
             </div>
           </Card>
