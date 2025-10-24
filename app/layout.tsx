@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://davidros.vercel.app"),
   title: "David Ros | Full Stack Developer Portfolio",
   description:
-    "Professional portfolio of David Ros, a passionate full-stack developer with 6+ years of experience building scalable web applications using React, Next.js, and modern technologies.",
+    "Professional portfolio of David Ros, a passionate full stack developer with 6+ years of experience building scalable web applications using React, Next.js, and modern technologies.",
   keywords: [
     "full stack developer",
     "React",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "David Ros | Full Stack Developer Portfolio",
     description:
-      "Passionate full-stack developer crafting scalable web applications with React, Next.js, and modern technologies.",
+      "Passionate full stack developer crafting scalable web applications with React, Next.js, and modern technologies.",
     url: "https://davidros.vercel.app", // Replace with your actual domain
     siteName: "David Ros Portfolio",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "David Ros | Full Stack Developer Portfolio",
     description:
-      "Passionate full-stack developer crafting scalable web applications with React, Next.js, and modern technologies.",
+      "Passionate full stack developer crafting scalable web applications with React, Next.js, and modern technologies.",
     images: [
       "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200&h=630&fit=crop",
     ], // Same image as Open Graph

@@ -17,7 +17,7 @@ const DEMO_QA = [
   {
     question: "Who are you?",
     response:
-      "I'm a full-stack developer with 5+ years of experience specializing in React, Next.js, and modern web technologies. I love creating beautiful, accessible user interfaces and robust back-end systems.",
+      "I'm a full stack developer with 6+ years of experience specializing in React, Next.js, and modern web technologies. I love creating beautiful, accessible user interfaces and robust back-end systems.",
   },
   {
     question: "What technologies do you use?",
@@ -37,7 +37,7 @@ const DEMO_QA = [
   {
     question: "Do you do freelance work?",
     response:
-      "Yes! I'm currently available for freelance projects. I specialize in full-stack web development, UI/UX design, and technical consulting. Feel free to reach out through the contact form for potential collaborations!",
+      "Yes! I'm currently available for freelance projects. I specialize in full stack web development, UI/UX design, and technical consulting. Feel free to reach out through the contact form for potential collaborations!",
   },
   {
     question: "What's your development process?",

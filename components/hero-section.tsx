@@ -78,7 +78,7 @@ export function HeroSection() {
                   <Code className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-sm font-medium text-primary">
-                  Hello, I&apos;m David
+                  Hello, I&apos;m David Ros
                 </span>
               </div>
 
@@ -98,7 +98,7 @@ export function HeroSection() {
             {/* Description */}
             <div className="max-w-4xl mx-auto space-y-6">
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-                Passionate full-stack developer with{" "}
+                Passionate full stack developer with{" "}
                 <span className="text-primary font-semibold">6+ years</span> of
                 experience building scalable web applications. I specialize in{" "}
                 <span className="text-accent font-semibold">
@@ -147,7 +147,7 @@ export function HeroSection() {
               className="h-14 px-8 text-lg glass-button hover:bg-white/10 border-primary/30 hover:border-primary/50 transition-all duration-300 group cursor-pointer"
             >
               <a
-                href="/david-ros-white-cv.pdf"
+                href="/david-ros-cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { Code2, Palette, Database, Zap } from "lucide-react";
+import { Code2, Palette, Database, Zap, Wrench } from "lucide-react";
 
 const skills = [
   {
@@ -9,26 +9,19 @@ const skills = [
     title: "Front-End Development",
     description: "List of my front-end skills",
     skills: [
+      "HTML",
+      "CSS",
+      "SCSS",
+      "Tailwind CSS",
+      "JavaScript",
+      "TypeScript",
       "React",
       "Vue",
       "Nuxt.js",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Tailwind CSS",
-      "Liquid",
-      "JSON",
-      "jQuery",
-      "HTML5",
-      "CSS3",
       "Bootstrap",
-      "Responsive Design",
-      "Cross-Browser Compatibility",
-      "Version Control (Git)",
-      "Testing",
-      "Debugging",
-      "Performance Optimization",
-      "Shopify",
+      "jQuery",
+      "Next.js",
+      "Liquid",
     ],
   },
   {
@@ -37,25 +30,44 @@ const skills = [
     description: "List of my back-end skills",
     skills: [
       "Node.js",
+      "Next.js",
+      "Nuxt.js",
+      "TypeScript",
+      "JavaScript",
       "PostgreSQL",
+      "GraphQL",
+      "RESTful APIs",
+      "Prisma",
       "Supabase",
+      "Convex",
       "Docker",
       "Kubernetes",
-      "REST APIs",
-      "GraphQL",
-      "Prisma",
+      "CI/CD",
+      "JSON",
     ],
   },
   {
-    icon: Palette,
-    title: "UX/UI Design",
-    description: "List of my UX/UI design skills",
+    icon: Wrench,
+    title: "Tools",
+    description: "List of tools I know",
     skills: [
       "Figma",
-      "User Research",
-      "Prototyping",
-      "Wireframing",
-      "Design Systems",
+      "Shopify",
+      "Hydrogen",
+      "Directus",
+      "Resend",
+      "SAP Hybris",
+      "Google Search Console",
+      "Google Analytics",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Vercel",
+      "ABTasty",
+      "Dynamic Yield",
+      "JIRA",
+      "Confluence",
+      "npm",
     ],
   },
   {
@@ -119,9 +131,9 @@ export function SkillsSection() {
                     {skill.description}
                   </p>
                   <div className="flex flex-wrap gap-2 pt-2">
-                    {skill.skills.map((s) => (
+                    {skill.skills.map((s, idx) => (
                       <span
-                        key={s}
+                        key={s + "-" + idx}
                         className="text-xs px-3 py-1 rounded-full glass-card text-foreground"
                       >
                         {s}

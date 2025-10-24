@@ -11,22 +11,27 @@ export function ExperienceSection() {
       company: "elpernilet",
       position: "Fullstack Developer & UI/UX Designer",
       location: "Navarcles, Spain",
-      period: "2025 - 2025 (On demand project)",
+      period: "Sep 2025 - Oct 2025 (On demand project)",
       description:
-        "Developed a professional web platform for premium catering services in Spain, featuring ham cutters, gourmet beverage bars, and waitstaff for exclusive events. Built with Next.js 14, React, TypeScript, Tailwind CSS, Supabase, and deployed on Vercel to generate qualified leads and position the brand as a national reference in premium catering.",
+        "Developed a professional web platform for premium catering services in Spain, featuring ham cutters, gourmet beverage bars, and waitstaff for exclusive events. Built with Next.js, React, TypeScript, Tailwind CSS, Supabase, and deployed on Vercel to generate qualified leads and position the brand as a national reference in premium catering.",
       technologies: [
-        "Next.js",
         "React",
-        "TypeScript",
         "Tailwind CSS",
+        "CSS",
+        "TypeScript",
         "Supabase",
-        "Resend",
-        "Google Analytics",
-        "RESTful APIs",
-        "Vercel",
-        "SEO",
+        "Next.js",
         "Figma",
-        "Responsive Design",
+        "Git",
+        "GitHub",
+        "Vercel",
+        "PostgreSQL",
+        "Resend",
+        "RESTful APIs",
+        "npm",
+        "Notion",
+        "Google Analytics",
+        "Google Search Console",
       ],
       achievements: [
         "Increased lead generation by 30% within the first three months through targeted SEO and user-centric design",
@@ -41,21 +46,32 @@ export function ExperienceSection() {
     {
       id: 2,
       company: "TOUS",
-      position: "Senior Frontend Developer",
+      position: "Senior Front-End Developer",
       location: "Manresa, Spain",
-      period: "2024 - 2025",
+      period: "Jul 2024 - Jul 2025",
       description:
         "Led front-end development initiatives focusing on performance, scalability, and maintainability as part of the CRO team. Implemented advanced problem-solving techniques and A/B testing to optimize user experience and conversion rates. Collaborated with backend teams for seamless API integration and state management.",
       technologies: [
-        "Vue.js",
+        "Vue",
         "Nuxt.js",
         "Git",
-        "GitLab CI/CD",
-        "Javascript",
+        "GitLab",
+        "CI/CD",
+        "JavaScript",
         "CSS",
+        "SCSS",
         "Bootstrap",
         "RESTful APIs",
-        "Docker/Kubernetes",
+        "Docker",
+        "Kubernetes",
+        "npm",
+        "Directus",
+        "JIRA",
+        "Confluence",
+        "SAP Hybris",
+        "Google Analytics",
+        "ABTasty",
+        "Dynamic Yield",
       ],
       achievements: [
         "Enhanced user experience and conversion rates (around 10%) through advanced problem-solving and optimization techniques",
@@ -68,24 +84,32 @@ export function ExperienceSection() {
     {
       id: 3,
       company: "liquoly",
-      position: "Frontend Developer & UI/UX Designer",
+      position: "Full Stack Developer & UI/UX Designer",
       location: "Manresa, Spain",
-      period: "2023 - 2024",
+      period: "Gen 2023 - Jul 2024",
       description:
         "Managed e-commerce operations for beverages and gourmet products on Shopify platform. Oversaw brand development, provided technical support, executed marketing and advertising campaigns, optimized SEO, and led site development and design.",
       technologies: [
         "Remix",
-        "Liquid",
+        "TypeScript",
         "GraphQL",
         "JSON",
         "Tailwind CSS",
+        "JSON",
+        "jQuery",
+        "Bootstrap",
+        "Liquid",
         "Shopify",
-        "SEO",
         "RESTful APIs",
-        "Marketing Automation",
-        "Google Analytics",
         "Figma",
+        "Git",
+        "GitHub",
         "Hydrogen",
+        "Next.js",
+        "npm",
+        "Notion",
+        "Google Analytics",
+        "Google Search Console",
       ],
       achievements: [
         "Increased sales by 25% through strategic brand development and marketing initiatives",
@@ -99,20 +123,23 @@ export function ExperienceSection() {
     {
       id: 4,
       company: "elpernilet",
-      position: "Frontend Developer & UI/UX Designer",
+      position: "Front-End Developer & UI/UX Designer",
       location: "Navarcles, Spain",
-      period: "2019 - 2024",
+      period: "Sep 2019 - Gen 2024",
       description:
         "Led the transformation from Shopify e-commerce to a dedicated landing page for event services. Managed brand development, provided technical support, executed marketing and advertising campaigns, optimized SEO, and oversaw site development and design.",
       technologies: [
-        "JavaScript",
+        "HTML",
         "CSS",
+        "JavaScript",
         "JSON",
-        "SEO",
-        "RESTful APIs",
-        "Marketing Automation",
-        "Google Analytics",
         "Figma",
+        "Git",
+        "GitHub",
+        "APIs",
+        "Notion",
+        "Google Search Console",
+        "Google Analytics",
       ],
       achievements: [
         "Developed and evolved brand identity during business transformation to event services",
@@ -196,9 +223,9 @@ export function ExperienceSection() {
                     Technologies Used:
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
+                    {exp.technologies.map((tech, idx) => (
                       <Badge
-                        key={tech}
+                        key={tech + "-" + idx}
                         variant="secondary"
                         className="glass-button"
                       >

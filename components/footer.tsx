@@ -41,7 +41,7 @@ const footerLinks = {
   ],
   resources: [
     { name: "Blog", href: "/blog" },
-    { name: "CV", href: "/david-ros-white-cv.pdf" },
+    { name: "CV", href: "/david-ros-cv.pdf" },
     { name: "Contact", href: "#contact" },
   ],
 };
@@ -71,7 +71,7 @@ export function Footer() {
                 </div>
 
                 <p className="text-muted-foreground text-base leading-relaxed max-w-md">
-                  Full-stack developer passionate about creating exceptional
+                  Full stack developer passionate about creating exceptional
                   digital experiences with modern technologies and clean code.
                 </p>
               </div>
