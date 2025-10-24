@@ -9,7 +9,7 @@ export function ExperienceSection() {
     {
       id: 1,
       company: "elpernilet",
-      position: "Fullstack Developer & UI/UX Designer",
+      position: "Full Stack Developer & UX/UI Designer",
       location: "Navarcles, Spain",
       period: "Sep 2025 - Oct 2025 (On demand project)",
       description:
@@ -84,7 +84,7 @@ export function ExperienceSection() {
     {
       id: 3,
       company: "liquoly",
-      position: "Full Stack Developer & UI/UX Designer",
+      position: "Full Stack Developer & UX/UI Designer",
       location: "Manresa, Spain",
       period: "Gen 2023 - Jul 2024",
       description:
