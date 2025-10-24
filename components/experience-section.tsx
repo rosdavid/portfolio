@@ -123,7 +123,7 @@ export function ExperienceSection() {
     {
       id: 4,
       company: "elpernilet",
-      position: "Front-End Developer & UI/UX Designer",
+      position: "Front-End Developer & UX/UI Designer",
       location: "Navarcles, Spain",
       period: "Sep 2019 - Gen 2024",
       description:
