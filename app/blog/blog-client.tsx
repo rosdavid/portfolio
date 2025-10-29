@@ -108,7 +108,7 @@ export function BlogClient({ initialPosts }: BlogClientProps) {
                 }`}
               >
                 <Filter className="h-4 w-4 mr-2" />
-                all los tags
+                All Tags
               </Button>
             </div>
 
