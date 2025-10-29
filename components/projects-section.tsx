@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Mokkio — v1.0.0-beta.1",
+    title: "Mokkio — v1.0.0-beta.2",
     description:
       "Mokkio is an mockup generator that allows users to create realistic device or beautiful mockups for their apps and websites quickly and easily.",
     image: "/mokkio.webp",
