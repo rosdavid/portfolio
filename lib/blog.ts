@@ -13,6 +13,7 @@ export interface BlogPost {
   featured: boolean;
   author: string;
   authorBio: string;
+  category: string;
 }
 
 // Función para calcular automáticamente el tiempo de lectura
@@ -20,23 +21,23 @@ function calculateReadTime(content: string): string {
   // Limpiar el contenido markdown de elementos que no son texto legible
   const cleanContent = content
     // Remover headers markdown (# ## ###)
-    .replace(/^#{1,6}\s+.*/gm, '')
+    .replace(/^#{1,6}\s+.*/gm, "")
     // Remover links markdown [text](url)
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     // Remover imágenes ![alt](url)
-    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, "")
     // Remover código inline `code`
-    .replace(/`[^`]+`/g, '')
+    .replace(/`[^`]+`/g, "")
     // Remover bloques de código ```code```
-    .replace(/```[\s\S]*?```/g, '')
+    .replace(/```[\s\S]*?```/g, "")
     // Remover HTML tags si los hay
-    .replace(/<[^>]*>/g, '')
+    .replace(/<[^>]*>/g, "")
     // Remover líneas vacías múltiples
-    .replace(/\n\s*\n/g, '\n')
+    .replace(/\n\s*\n/g, "\n")
     .trim();
 
   // Contar palabras (dividiendo por espacios y saltos de línea)
-  const words = cleanContent.split(/\s+/).filter(word => word.length > 0);
+  const words = cleanContent.split(/\s+/).filter((word) => word.length > 0);
   const wordCount = words.length;
 
   // Velocidad de lectura promedio: 200 palabras por minuto
@@ -83,7 +84,7 @@ function parseFrontmatter(content: string): {
         if (
           typeof value === "string" &&
           ((value.startsWith('"') && value.endsWith('"')) ||
-          (value.startsWith("'") && value.endsWith("'")))
+            (value.startsWith("'") && value.endsWith("'")))
         ) {
           value = value.slice(1, -1);
         }
@@ -123,12 +124,12 @@ function parseFrontmatter(content: string): {
 }
 
 // Función para obtener todos los posts del blog
-export function getBlogPosts(): BlogPost[] {
+export function getBlogPosts(category?: string): BlogPost[] {
   const contentDir = path.join(process.cwd(), "content", "blog");
 
   try {
     const files = fs.readdirSync(contentDir);
-    const posts: BlogPost[] = [];
+    let posts: BlogPost[] = [];
 
     files.forEach((file, index) => {
       if (file.endsWith(".md")) {
@@ -140,9 +141,10 @@ export function getBlogPosts(): BlogPost[] {
         const slug = file.replace(".md", "");
 
         // Calcular tiempo de lectura automáticamente si no está especificado
-        const readTime = typeof frontmatter.readTime === "string"
-          ? frontmatter.readTime
-          : calculateReadTime(markdown);
+        const readTime =
+          typeof frontmatter.readTime === "string"
+            ? frontmatter.readTime
+            : calculateReadTime(markdown);
 
         posts.push({
           id: index + 1,
@@ -172,9 +174,19 @@ export function getBlogPosts(): BlogPost[] {
             typeof frontmatter.authorBio === "string"
               ? frontmatter.authorBio
               : "",
+          // Añadir la categoría si existe en el frontmatter
+          category:
+            typeof frontmatter.category === "string"
+              ? frontmatter.category
+              : "blog",
         });
       }
     });
+
+    // Filtrar por categoría si se especifica
+    if (category && category !== "todos") {
+      posts = posts.filter((post) => post.category === category);
+    }
 
     // Ordenar por fecha (más reciente primero)
     return posts.sort(

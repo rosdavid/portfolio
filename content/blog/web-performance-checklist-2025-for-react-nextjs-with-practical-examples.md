@@ -4,9 +4,10 @@ excerpt: "An actionable guide to improve Core Web Vitals (LCP, CLS, INP) in Reac
 date: "2025-10-21"
 readTime: "12 min read"
 tags: ["Performance", "Next.js", "React", "Core Web Vitals", "TypeScript"]
+category: "blog"
 featured: false
 author: "David Ros"
-authorBio: "Full-stack developer who optimizes before scaling."
+authorBio: "Full stack developer who optimizes before scaling."
 ---
 
 # Web Performance Checklist 2025 for React/Next.js (with Practical Examples)

@@ -23,22 +23,31 @@ interface BlogClientProps {
 export function BlogClient({ initialPosts }: BlogClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const allTags = Array.from(
     new Set(initialPosts.flatMap((post) => post.tags))
   ).sort();
 
+  // Categorías disponibles
+  const allCategories = [
+    { key: "all", label: "All" },
+    { key: "blog", label: "Blog" },
+    { key: "devlog", label: "Devlog" },
+  ];
+
+  // Filtrado por categoría, búsqueda y tag
   const filteredPosts = initialPosts.filter((post) => {
+    const matchesCategory =
+      selectedCategory === "all" || post.category === selectedCategory;
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.tags.some((tag) =>
         tag.toLowerCase().includes(searchTerm.toLowerCase())
       );
-
     const matchesTag = !selectedTag || post.tags.includes(selectedTag);
-
-    return matchesSearch && matchesTag;
+    return matchesCategory && matchesSearch && matchesTag;
   });
 
   const featuredPosts = filteredPosts.filter((post) => post.featured);
@@ -59,13 +68,33 @@ export function BlogClient({ initialPosts }: BlogClientProps) {
             </p>
           </div>
 
-          {/* Search and Filter */}
+          {/* Filtros de Categoría, Búsqueda y Tags */}
           <div className="max-w-2xl mx-auto mb-12">
+            {/* Filtro de Categoría */}
+            <div className="flex justify-center gap-2 mb-6">
+              {allCategories.map((cat) => (
+                <Button
+                  key={cat.key}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setSelectedCategory(cat.key)}
+                  className={`glass-button ${
+                    selectedCategory === cat.key
+                      ? "bg-primary text-primary-foreground"
+                      : ""
+                  }`}
+                >
+                  {cat.label}
+                </Button>
+              ))}
+            </div>
+
+            {/* Búsqueda y filtro por tag */}
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
-                  placeholder="Search articles..."
+                  placeholder="Buscar artículos..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 glass-card border-white/10"
@@ -79,7 +108,7 @@ export function BlogClient({ initialPosts }: BlogClientProps) {
                 }`}
               >
                 <Filter className="h-4 w-4 mr-2" />
-                All Tags
+                all los tags
               </Button>
             </div>
 
