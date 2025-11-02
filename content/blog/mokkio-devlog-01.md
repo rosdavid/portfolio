@@ -25,7 +25,7 @@ Mokkio was born out of the need for a fast, customizable, and accessible solutio
 - **Modern UI:** Tailwind CSS with a sleek dark theme, shadcn/ui components, and Inter font for a professional, consistent look. Subtle animations and responsive design throughout.
 - **Core Features:** State management with React hooks, support for multiple images per device, gradient presets, and a basic undo/redo system.
 - **Landing Pages:** Informative sections (Hero, Features, How It Works), welcome popup, legal pages (privacy, terms, cookies), and a cookie banner.
-- **Initial Monetization:** Google Ads and Analytics integration, plus support for donations via Ko-fi.
+- **Initial Monetization:** Donations via Buy Me a Coffee.
 
 ## 🛠️ Technical Challenges
 
@@ -50,11 +50,6 @@ Next version plans include advanced effects (noise, blur), customizable canvas s
 
 - [Live Website](https://mokkio.vercel.app)
 - [GitHub Repository](https://github.com/rosdavid/mokkio)
-
-## Screenshots & Media
-
-![Mokkio Screenshot 1](./images/mokkio-screenshot-1.png)
-![Mokkio Screenshot 2](./images/mokkio-screenshot-2.png)
 
 ---
 
