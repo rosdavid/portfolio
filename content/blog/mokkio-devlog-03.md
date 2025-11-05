@@ -84,7 +84,7 @@ Beta.3 delivers significant UX improvements with the PWA experience, making Mokk
 
 ## 🔮 Roadmap for Beta.4
 
-Beta.4 will focus on advanced presets, triple mockups, add more devices, add more configurations, and preparing for the stable 1.0 release. We're also planning deeper integrations with design tools and expanded device support.
+Beta.4 will focus on advanced presets, double mockups, add more devices, add more configurations, and preparing for the stable 1.0 release. We're also planning deeper integrations with design tools and expanded device support.
 
 ---
 
