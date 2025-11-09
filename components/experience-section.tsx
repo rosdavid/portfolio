@@ -26,6 +26,7 @@ export function ExperienceSection() {
         "GitHub",
         "Vercel",
         "PostgreSQL",
+        "SQL",
         "Resend",
         "RESTful APIs",
         "npm",
