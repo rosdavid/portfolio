@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Mokkio — v1.0.0-beta.2",
+    title: "Mokkio — v1.0.0-beta.4",
     description:
       "Mokkio is an mockup generator that allows users to create realistic device or beautiful mockups for their apps and websites quickly and easily.",
     image: "/mokkio.webp",
@@ -15,6 +15,7 @@ const projects = [
       "React",
       "TypeScript",
       "Tailwind CSS",
+      "CSS",
       "Next.js",
       "Figma",
       "Git",
@@ -22,6 +23,10 @@ const projects = [
       "Vercel",
       "npm",
       "Notion",
+      "Vitest",
+      "Supabase",
+      "PostgreSQL",
+      "SQL",
     ],
     github: "https://github.com/rosdavid/mokkio",
     demo: "https://mokkio.vercel.app/",
@@ -42,6 +47,7 @@ const projects = [
       "GitHub",
       "Vercel",
       "PostgreSQL",
+      "SQL",
       "Stripe",
       "Supabase",
       "npm",
@@ -65,6 +71,7 @@ const projects = [
       "Node.js",
       "Prisma",
       "MySQL",
+      "SQL",
       "Figma",
       "RESTful APIs",
       "Git",
